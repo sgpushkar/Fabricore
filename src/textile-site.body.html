@@ -1,0 +1,1027 @@
+
+  <!-- ============================================================
+       SCROLL PROGRESS BAR
+  ============================================================ -->
+  <div id="hero-progress-bar"></div>
+
+  <!-- ============================================================
+       NAVBAR
+  ============================================================ -->
+  <nav id="navbar">
+    <div class="container">
+      <div class="nav-inner">
+
+        <a href="#" class="nav-logo">
+          <div class="nav-logo-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M3 7h18M3 12h18M3 17h18"/>
+              <circle cx="7"  cy="7"  r="1.5" fill="white" stroke="none"/>
+              <circle cx="12" cy="12" r="1.5" fill="white" stroke="none"/>
+              <circle cx="17" cy="17" r="1.5" fill="white" stroke="none"/>
+            </svg>
+          </div>
+          <span class="nav-logo-text">Fabri<span>core</span></span>
+        </a>
+
+        <ul class="nav-links">
+          <li><a href="#hero-scroll-zone" class="active">Home</a></li>
+          <li><a href="#collections">Collections</a></li>
+          <li><a href="#fabrics">Fabrics</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <a href="#collections" class="btn-primary">
+            Explore Fabrics
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+
+        <button class="nav-hamburger" id="navHamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Nav -->
+  <div class="nav-mobile" id="navMobile">
+    <button class="nav-mobile-close" id="navMobileClose">✕</button>
+    <a href="#hero-scroll-zone" onclick="closeMobileNav()">Home</a>
+    <a href="#collections"      onclick="closeMobileNav()">Collections</a>
+    <a href="#fabrics"          onclick="closeMobileNav()">Fabrics</a>
+    <a href="#about"            onclick="closeMobileNav()">About</a>
+    <a href="#contact"          onclick="closeMobileNav()">Contact</a>
+    <a href="#collections" class="btn-sage" onclick="closeMobileNav()">Explore Fabrics</a>
+  </div>
+
+  <!-- ============================================================
+       HERO SECTION — SCROLL-PINNED ARCHITECTURE
+       ─────────────────────────────────────────────────────────────
+       FUTURE CANVAS INTEGRATION GUIDE:
+       ─────────────────────────────────────────────────────────────
+       1. Insert inside #hero-canvas-layer:
+          <canvas id="hero-anim-canvas"></canvas>
+
+       2. In your JS animation file:
+          - Resize canvas to match #hero-pin-wrapper dimensions
+          - Total frames = your frame count (e.g., 150)
+          - Use window.heroScrollProgress (updated below) to drive frames
+          - Example:
+            const frameIndex = Math.floor(heroScrollProgress * (totalFrames - 1));
+            drawFrame(ctx, frames[frameIndex]);
+
+       3. The pinned scroll zone gives you 100vh of scroll distance.
+          You can increase --hero-scroll-distance in #hero-scroll-zone
+          for more frames.
+
+       4. z-index layer order (bottom to top):
+          0: #hero-canvas-layer    (canvas / background)
+          1: #hero-texture-layer   (subtle texture)
+          2: #hero-deco-layer      (floating swatches)
+          3: #hero-content-layer   (text + buttons)
+          4: #hero-scroll-indicator
+  ============================================================ -->
+  <div id="hero-scroll-zone">
+
+    <div id="hero-pin-wrapper">
+
+      <!-- LAYER 0: Canvas / Background -->
+      <div id="hero-canvas-layer">
+        <!-- 🎬 FUTURE: <canvas id="hero-anim-canvas" style="position:absolute;inset:0;width:100%;height:100%;"></canvas> -->
+        <div class="hero-bg-shape hero-bg-shape-1"></div>
+        <div class="hero-bg-shape hero-bg-shape-2"></div>
+        <div class="hero-bg-shape hero-bg-shape-3"></div>
+      </div>
+
+      <!-- LAYER 1: Texture Overlay -->
+      <div id="hero-texture-layer"></div>
+
+      <!-- LAYER 2: Floating Decorations -->
+      <div id="hero-deco-layer">
+        <div class="hero-deco-pill hero-deco-pill-1">🧵 Premium Cotton</div>
+        <div class="hero-deco-pill hero-deco-pill-2">🌿 Eco Linen</div>
+        <div class="hero-deco-pill hero-deco-pill-3">🎨 Custom Print</div>
+        <div class="hero-deco-swatch hero-deco-swatch-1"></div>
+        <div class="hero-deco-swatch hero-deco-swatch-2"></div>
+        <div class="hero-deco-swatch hero-deco-swatch-3"></div>
+        <div class="hero-deco-circle hero-deco-circle-1"></div>
+        <div class="hero-deco-circle hero-deco-circle-2"></div>
+      </div>
+
+      <!-- LAYER 3: Main Hero Content -->
+      <div id="hero-content-layer">
+
+        <div class="hero-eyebrow">
+          <span class="hero-eyebrow-dot"></span>
+          Textile Excellence Since 2008
+        </div>
+
+        <h1 class="hero-headline">
+          Textiles That<br />
+          Bring <span class="line-accent">Ideas</span><br />
+          To Life
+        </h1>
+
+        <p class="hero-subtext">
+          Modern textile bundles and fabric collections for fashion, retail, interiors, and creative projects.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#collections" class="btn-sage">
+            Explore Collection
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="#contact" class="btn-outline">Contact Us</a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="hero-stat-num">500+</div>
+            <div class="hero-stat-label">Fabric Types</div>
+          </div>
+          <div class="hero-stat-divider"></div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">12K+</div>
+            <div class="hero-stat-label">Happy Clients</div>
+          </div>
+          <div class="hero-stat-divider"></div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">50+</div>
+            <div class="hero-stat-label">Countries</div>
+          </div>
+          <div class="hero-stat-divider"></div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">15yrs</div>
+            <div class="hero-stat-label">Experience</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- LAYER 4: Scroll Indicator -->
+      <div id="hero-scroll-indicator" onclick="scrollPastHero()">
+        <div class="scroll-indicator-mouse">
+          <div class="scroll-indicator-wheel"></div>
+        </div>
+        <span class="scroll-indicator-text">Scroll</span>
+      </div>
+
+    </div>
+
+  </div>
+  <!-- /hero-scroll-zone -->
+
+  <!-- Transition Overlay -->
+  <div id="hero-transition-overlay"></div>
+
+  <!-- ============================================================
+       MAIN CONTENT
+  ============================================================ -->
+  <div id="main-content">
+
+    <!-- ──────────────────────────────────────────────────────────
+         SECTION 1: FEATURED TEXTILE BUNDLES
+    ────────────────────────────────────────────────────────────── -->
+    <section class="section section-alt" id="bundles">
+      <div class="container">
+
+        <div class="section-header centered reveal">
+          <div class="section-tag">Featured Bundles</div>
+          <h2 class="section-heading">Premium Textile Bundles</h2>
+          <p class="section-subheading">
+            Carefully curated fabric bundles for every creative need — from fashion design to home interiors.
+          </p>
+        </div>
+
+        <div class="bundles-grid">
+
+          <!-- Cotton -->
+          <div class="bundle-card reveal reveal-delay-1">
+            <div class="bundle-card-image">
+              <img class="bundle-card-img" loading="lazy" src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=1200&q=80" alt="Cotton fabric bundles" />
+              <span class="bundle-card-badge badge-popular">Popular</span>
+            </div>
+            <div class="bundle-card-body">
+              <div class="bundle-card-title">Cotton Bundles</div>
+              <div class="bundle-card-desc">Breathable, versatile cotton fabrics in solid, striped, and textured weaves. Perfect for garments and homeware.</div>
+              <div class="bundle-card-footer">
+                <div class="bundle-card-meta">
+                  <span>🎨</span> 24 Colors Available
+                </div>
+                <div class="bundle-card-arrow">
+                  <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Linen -->
+          <div class="bundle-card reveal reveal-delay-2">
+            <div class="bundle-card-image">
+              <img class="bundle-card-img" loading="lazy" src="https://images.unsplash.com/photo-1516762689617-e1cffcef479d?auto=format&fit=crop&w=1200&q=80" alt="Natural linen rolls" />
+              <span class="bundle-card-badge badge-new">New</span>
+            </div>
+            <div class="bundle-card-body">
+              <div class="bundle-card-title">Linen Rolls</div>
+              <div class="bundle-card-desc">Natural linen with a distinctive texture — ideal for summer collections, interior décor, and sustainable fashion.</div>
+              <div class="bundle-card-footer">
+                <div class="bundle-card-meta"><span>📏</span> 30m – 500m Rolls</div>
+                <div class="bundle-card-arrow">
+                  <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Denim -->
+          <div class="bundle-card reveal reveal-delay-3">
+            <div class="bundle-card-image">
+              <img class="bundle-card-img" loading="lazy" src="https://images.pexels.com/photos/6765164/pexels-photo-6765164.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Denim fabric bundles" />
+              <span class="bundle-card-badge badge-popular">Popular</span>
+            </div>
+            <div class="bundle-card-body">
+              <div class="bundle-card-title">Denim Fabrics</div>
+              <div class="bundle-card-desc">Classic to stretch denim fabrics in various weights and washes — ready for bulk garment manufacturing.</div>
+              <div class="bundle-card-footer">
+                <div class="bundle-card-meta"><span>⚖️</span> 6oz – 14oz Weights</div>
+                <div class="bundle-card-arrow">
+                  <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Polyester -->
+          <div class="bundle-card reveal reveal-delay-1">
+            <div class="bundle-card-image">
+              <img class="bundle-card-img" loading="lazy" src="https://images.unsplash.com/photo-1620799139507-2a76f79a2f4d?auto=format&fit=crop&w=1200&q=80" alt="Polyester fabric rolls" />
+              <span class="bundle-card-badge badge-new">New</span>
+            </div>
+            <div class="bundle-card-body">
+              <div class="bundle-card-title">Polyester Bundles</div>
+              <div class="bundle-card-desc">High-performance polyester fabrics — wrinkle-resistant, colorfast, and perfect for activewear and uniforms.</div>
+              <div class="bundle-card-footer">
+                <div class="bundle-card-meta"><span>✨</span> Anti-Wrinkle Finish</div>
+                <div class="bundle-card-arrow">
+                  <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Printed -->
+          <div class="bundle-card reveal reveal-delay-2">
+            <div class="bundle-card-image">
+              <img class="bundle-card-img" loading="lazy" src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&w=1200&q=80" alt="Printed fabric collection" />
+              <span class="bundle-card-badge badge-premium">Premium</span>
+            </div>
+            <div class="bundle-card-body">
+              <div class="bundle-card-title">Printed Fabrics</div>
+              <div class="bundle-card-desc">Vibrant digital and screen-printed fabrics with hundreds of patterns — great for fashion, accessories, and crafts.</div>
+              <div class="bundle-card-footer">
+                <div class="bundle-card-meta"><span>🖼️</span> 200+ Patterns</div>
+                <div class="bundle-card-arrow">
+                  <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Silk Blend -->
+          <div class="bundle-card reveal reveal-delay-3">
+            <div class="bundle-card-image">
+              <img class="bundle-card-img" loading="lazy" src="https://images.unsplash.com/photo-1503342394128-c104d54dba01?auto=format&fit=crop&w=1200&q=80" alt="Silk blend fabrics" />
+              <span class="bundle-card-badge badge-premium">Premium</span>
+            </div>
+            <div class="bundle-card-body">
+              <div class="bundle-card-title">Silk Blends</div>
+              <div class="bundle-card-desc">Luxurious silk blend fabrics with a natural sheen — crafted for premium garments and elegant occasions.</div>
+              <div class="bundle-card-footer">
+                <div class="bundle-card-meta"><span>👑</span> Luxury Grade</div>
+                <div class="bundle-card-arrow">
+                  <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────────────────
+         SECTION 2: COLLECTIONS SHOWCASE
+    ────────────────────────────────────────────────────────────── -->
+    <section class="section section-cream" id="collections">
+      <div class="container">
+
+        <div class="section-header reveal">
+          <div class="section-tag">Collections</div>
+          <h2 class="section-heading">Our Signature Collections</h2>
+          <p class="section-subheading">
+            Each collection is designed with intention — for creatives who demand quality, consistency, and variety.
+          </p>
+        </div>
+
+        <div class="collections-wrapper">
+
+          <!-- Collection 1 -->
+          <div class="collection-item reveal">
+            <div class="collection-image-wrap">
+              <img
+                class="collection-image"
+                loading="lazy"
+                src="https://images.unsplash.com/photo-1516762689617-e1cffcef479d?auto=format&fit=crop&w=1400&q=80"
+                alt="Natural weaves collection"
+              />
+            </div>
+            <div class="collection-content">
+              <div class="collection-tag" style="background: var(--sage-light); color: var(--sage-dark);">
+                🌿 New Season
+              </div>
+              <h3 class="collection-title">The Natural Weaves Collection</h3>
+              <p class="collection-desc">
+                A curated selection of organic cotton, natural linen, and raw hemp fabrics. 
+                Built for sustainable fashion brands and conscious creators who believe fabric should 
+                be as good for the planet as it looks.
+              </p>
+              <div class="collection-specs">
+                <div class="collection-spec">
+                  <span class="spec-label">Materials</span>
+                  <span class="spec-value">Cotton, Linen, Hemp</span>
+                </div>
+                <div class="collection-spec">
+                  <span class="spec-label">Widths</span>
+                  <span class="spec-value">45" – 60"</span>
+                </div>
+                <div class="collection-spec">
+                  <span class="spec-label">MOQ</span>
+                  <span class="spec-value">50 meters</span>
+                </div>
+              </div>
+              <a href="#contact" class="btn-sage">View Collection</a>
+            </div>
+          </div>
+
+          <!-- Collection 2 -->
+          <div class="collection-item reverse reveal">
+            <div class="collection-image-wrap">
+              <img
+                class="collection-image"
+                loading="lazy"
+                src="https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?auto=format&fit=crop&w=1400&q=80"
+                alt="Bold print studio collection"
+              />
+            </div>
+            <div class="collection-content">
+              <div class="collection-tag" style="background: var(--blue-light); color: var(--blue-dark);">
+                🎨 Best Seller
+              </div>
+              <h3 class="collection-title">The Bold Print Studio</h3>
+              <p class="collection-desc">
+                Over 200 unique print designs — from geometric patterns to florals, abstract art, and 
+                cultural motifs. Available on multiple base fabrics with full customization on custom orders.
+              </p>
+              <div class="collection-specs">
+                <div class="collection-spec">
+                  <span class="spec-label">Print Types</span>
+                  <span class="spec-value">Digital, Screen</span>
+                </div>
+                <div class="collection-spec">
+                  <span class="spec-label">Patterns</span>
+                  <span class="spec-value">200+ Designs</span>
+                </div>
+                <div class="collection-spec">
+                  <span class="spec-label">Colorfastness</span>
+                  <span class="spec-value">Grade A</span>
+                </div>
+              </div>
+              <a href="#contact" class="btn-sage">View Collection</a>
+            </div>
+          </div>
+
+          <!-- Collection 3 -->
+          <div class="collection-item reveal">
+            <div class="collection-image-wrap">
+              <img
+                class="collection-image"
+                loading="lazy"
+                src="https://images.pexels.com/photos/5698851/pexels-photo-5698851.jpeg?auto=compress&cs=tinysrgb&w=1400"
+                alt="Uniform and workwear fabric collection"
+              />
+            </div>
+            <div class="collection-content">
+              <div class="collection-tag" style="background: var(--pink-light); color: var(--pink-dark);">
+                ⚡ Industrial Grade
+              </div>
+              <h3 class="collection-title">Uniform & Workwear Fabrics</h3>
+              <p class="collection-desc">
+                Heavy-duty, durable fabrics engineered for uniforms, workwear, and industrial clothing. 
+                Tested for durability, colorfastness, and wash resilience — trusted by corporations and 
+                garment factories worldwide.
+              </p>
+              <div class="collection-specs">
+                <div class="collection-spec">
+                  <span class="spec-label">Composition</span>
+                  <span class="spec-value">Poly-Cotton Blend</span>
+                </div>
+                <div class="collection-spec">
+                  <span class="spec-label">Wash Cycles</span>
+                  <span class="spec-value">100+ guaranteed</span>
+                </div>
+                <div class="collection-spec">
+                  <span class="spec-label">MOQ</span>
+                  <span class="spec-value">200 meters</span>
+                </div>
+              </div>
+              <a href="#contact" class="btn-sage">View Collection</a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────────────────
+         SECTION 3: FABRIC CATEGORIES
+    ────────────────────────────────────────────────────────────── -->
+    <section class="section section-alt" id="fabrics">
+      <div class="container">
+
+        <div class="section-header centered reveal">
+          <div class="section-tag">All Fabrics</div>
+          <h2 class="section-heading">Shop by Fabric Type</h2>
+          <p class="section-subheading">
+            Explore our complete range — from everyday cottons to premium silk blends.
+          </p>
+        </div>
+
+        <div class="categories-grid">
+
+          <div class="category-card cat-sage reveal reveal-delay-1" onclick="openCategoryModal('cotton')" style="cursor: pointer;">
+            <div class="category-icon icon-sage">🧶</div>
+            <div>
+              <div class="category-name">Cotton</div>
+              <div class="category-count">48 varieties</div>
+            </div>
+            <div class="category-arrow">→</div>
+          </div>
+
+          <div class="category-card cat-blue reveal reveal-delay-2" onclick="openCategoryModal('linen')" style="cursor: pointer;">
+            <div class="category-icon icon-blue">🌿</div>
+            <div>
+              <div class="category-name">Linen</div>
+              <div class="category-count">22 varieties</div>
+            </div>
+            <div class="category-arrow">→</div>
+          </div>
+
+          <div class="category-card cat-sage reveal reveal-delay-3" onclick="openCategoryModal('denim')" style="cursor: pointer;">
+            <div class="category-icon icon-sage">👖</div>
+            <div>
+              <div class="category-name">Denim</div>
+              <div class="category-count">18 varieties</div>
+            </div>
+            <div class="category-arrow">→</div>
+          </div>
+
+          <div class="category-card cat-pink reveal reveal-delay-4" onclick="openCategoryModal('rayon')" style="cursor: pointer;">
+            <div class="category-icon icon-pink">🌊</div>
+            <div>
+              <div class="category-name">Rayon</div>
+              <div class="category-count">31 varieties</div>
+            </div>
+            <div class="category-arrow">→</div>
+          </div>
+
+          <div class="category-card cat-blue reveal reveal-delay-1" onclick="openCategoryModal('polyester')" style="cursor: pointer;">
+            <div class="category-icon icon-blue">🔮</div>
+            <div>
+              <div class="category-name">Polyester</div>
+              <div class="category-count">40 varieties</div>
+            </div>
+            <div class="category-arrow">→</div>
+          </div>
+
+          <div class="category-card cat-pink reveal reveal-delay-2" onclick="openCategoryModal('printed')" style="cursor: pointer;">
+            <div class="category-icon icon-pink">🎨</div>
+            <div>
+              <div class="category-name">Printed Fabrics</div>
+              <div class="category-count">200+ designs</div>
+            </div>
+            <div class="category-arrow">→</div>
+          </div>
+
+          <div class="category-card cat-beige reveal reveal-delay-3" onclick="openCategoryModal('uniform')" style="cursor: pointer;">
+            <div class="category-icon icon-beige">🏭</div>
+            <div>
+              <div class="category-name">Uniform Fabrics</div>
+              <div class="category-count">15 varieties</div>
+            </div>
+            <div class="category-arrow">→</div>
+          </div>
+
+          <div class="category-card cat-sage reveal reveal-delay-4" onclick="openCategoryModal('silk')" style="cursor: pointer;">
+            <div class="category-icon icon-sage">✨</div>
+            <div>
+              <div class="category-name">Silk Blend</div>
+              <div class="category-count">12 varieties</div>
+            </div>
+            <div class="category-arrow">→</div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────────────────
+         SECTION 4: WHY CHOOSE US
+    ────────────────────────────────────────────────────────────── -->
+    <section class="section section-cream" id="why-us">
+      <div class="container">
+
+        <div class="section-header centered reveal">
+          <div class="section-tag">Why Fabricore</div>
+          <h2 class="section-heading">Built for Businesses That Demand More</h2>
+          <p class="section-subheading">
+            From independent designers to large-scale manufacturers — we deliver quality, speed, and reliability every time.
+          </p>
+        </div>
+
+        <div class="features-grid">
+
+          <div class="feature-card reveal reveal-delay-1">
+            <div class="feature-icon-wrap icon-sage">📦</div>
+            <div class="feature-title">Bulk Orders Welcome</div>
+            <p class="feature-desc">From 50 meters to 50,000+ meters — we handle bulk orders with consistent quality, competitive pricing, and reliable lead times.</p>
+          </div>
+
+          <div class="feature-card reveal reveal-delay-2">
+            <div class="feature-icon-wrap icon-blue">🏅</div>
+            <div class="feature-title">Premium Quality</div>
+            <p class="feature-desc">Every bolt of fabric passes rigorous quality checks — shrinkage, colorfastness, tensile strength — before leaving our facility.</p>
+          </div>
+
+          <div class="feature-card reveal reveal-delay-3">
+            <div class="feature-icon-wrap icon-pink">🚀</div>
+            <div class="feature-title">Fast Delivery</div>
+            <p class="feature-desc">Strategically located warehouses and trusted logistics partners ensure your fabrics arrive on schedule, every time.</p>
+          </div>
+
+          <div class="feature-card reveal reveal-delay-1">
+            <div class="feature-icon-wrap icon-beige">✏️</div>
+            <div class="feature-title">Custom Orders</div>
+            <p class="feature-desc">Need a specific color, weave, or print? Our custom order service turns your vision into reality — from sample to production.</p>
+          </div>
+
+          <div class="feature-card reveal reveal-delay-2">
+            <div class="feature-icon-wrap icon-sage">🎨</div>
+            <div class="feature-title">Multiple Designs</div>
+            <p class="feature-desc">Over 500 ready-to-ship fabric designs across all categories — constantly refreshed with new seasonal collections.</p>
+          </div>
+
+          <div class="feature-card reveal reveal-delay-3">
+            <div class="feature-icon-wrap icon-blue">🤝</div>
+            <div class="feature-title">Trusted Supplier</div>
+            <p class="feature-desc">12,000+ satisfied clients across 50+ countries trust Fabricore for consistent, ethical, and professional textile supply.</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────────────────
+         SECTION 5: GALLERY
+    ────────────────────────────────────────────────────────────── -->
+    <section class="section section-alt" id="gallery">
+      <div class="container">
+
+        <div class="section-header centered reveal">
+          <div class="section-tag">Gallery</div>
+          <h2 class="section-heading">Textile Stories in Every Thread</h2>
+          <p class="section-subheading">
+            A visual journey through our warehouse, rolls, bundles, and fabric collections.
+          </p>
+        </div>
+
+        <div class="gallery-grid reveal">
+
+          <div class="gallery-item">
+            <img class="gallery-image" loading="lazy" src="/gallery/gallery-01.png" alt="Textile rolls" />
+            <div class="gallery-overlay"><span class="gallery-label">Textile Rolls</span></div>
+          </div>
+
+          <div class="gallery-item">
+            <img class="gallery-image" loading="lazy" src="/gallery/gallery-02.png" alt="Denim closeup" />
+            <div class="gallery-overlay"><span class="gallery-label">Denim Closeup</span></div>
+          </div>
+
+          <div class="gallery-item">
+            <img class="gallery-image" loading="lazy" src="/gallery/gallery-03.png" alt="Printed fabrics" />
+            <div class="gallery-overlay"><span class="gallery-label">Printed Fabrics</span></div>
+          </div>
+
+          <div class="gallery-item">
+            <img class="gallery-image" loading="lazy" src="/gallery/gallery-04.png" alt="Fabric bundles" />
+            <div class="gallery-overlay"><span class="gallery-label">Fabric Bundles</span></div>
+          </div>
+
+          <div class="gallery-item">
+            <img class="gallery-image" loading="lazy" src="/gallery/gallery-05.png" alt="Warehouse" />
+            <div class="gallery-overlay"><span class="gallery-label">Warehouse</span></div>
+          </div>
+
+          <div class="gallery-item">
+            <img class="gallery-image" loading="lazy" src="/gallery/gallery-03.png" alt="Color patterns" />
+            <div class="gallery-overlay"><span class="gallery-label">Color Patterns</span></div>
+          </div>
+
+          <div class="gallery-item">
+            <img class="gallery-image" loading="lazy" src="/gallery/gallery-01.png" alt="Natural linen" />
+            <div class="gallery-overlay"><span class="gallery-label">Natural Linen</span></div>
+          </div>
+
+          <div class="gallery-item">
+            <img class="gallery-image" loading="lazy" src="/gallery/gallery-05.png" alt="Silk blends" />
+            <div class="gallery-overlay"><span class="gallery-label">Silk Blends</span></div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────────────────
+         SECTION 6: ABOUT
+    ────────────────────────────────────────────────────────────── -->
+    <section class="section" id="about">
+      <div class="container">
+
+        <div class="about-grid">
+
+          <!-- Image Stack -->
+          <div class="about-image-stack reveal">
+            <div class="about-img-main">
+              <img
+                class="about-image"
+                loading="lazy"
+                src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=1200&q=80"
+                alt="Textile design studio"
+              />
+            </div>
+            <div class="about-img-secondary">
+              <img
+                class="about-image"
+                loading="lazy"
+                src="https://images.pexels.com/photos/4491881/pexels-photo-4491881.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                alt="Textile manufacturing inspection"
+              />
+            </div>
+            <div class="about-badge">
+              <div class="about-badge-num">15+</div>
+              <div class="about-badge-label">Years of<br>Excellence</div>
+            </div>
+          </div>
+
+          <!-- About Content -->
+          <div class="about-content reveal reveal-delay-2">
+            <div class="section-tag">About Us</div>
+            <h2 class="section-heading">A Studio Built on the Love of Fabric</h2>
+
+            <p class="section-subheading">
+              Fabricore was founded in 2008 with a simple mission: to make premium-quality textiles accessible for businesses of every size — from independent designers to global garment factories.
+            </p>
+
+            <div class="about-points">
+              <div class="about-point">
+                <div class="about-point-icon">✓</div>
+                <span>Full-service textile sourcing and wholesale supply across 50+ countries.</span>
+              </div>
+              <div class="about-point">
+                <div class="about-point-icon">✓</div>
+                <span>Certified manufacturing partners with rigorous quality control standards.</span>
+              </div>
+              <div class="about-point">
+                <div class="about-point-icon">✓</div>
+                <span>Custom print and weave services for brands seeking unique identity.</span>
+              </div>
+              <div class="about-point">
+                <div class="about-point-icon">✓</div>
+                <span>Sustainable and eco-friendly fabric options across all categories.</span>
+              </div>
+              <div class="about-point">
+                <div class="about-point-icon">✓</div>
+                <span>Flexible MOQs — from small designer orders to industrial-scale supply.</span>
+              </div>
+            </div>
+
+            <div class="about-metrics">
+              <div class="about-metric">
+                <div class="about-metric-num">500+</div>
+                <div class="about-metric-label">Fabric Varieties</div>
+              </div>
+              <div class="about-metric">
+                <div class="about-metric-num">12K+</div>
+                <div class="about-metric-label">Active Clients</div>
+              </div>
+              <div class="about-metric">
+                <div class="about-metric-num">50+</div>
+                <div class="about-metric-label">Countries Served</div>
+              </div>
+            </div>
+
+            <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+              <a href="#contact" class="btn-sage">Work With Us</a>
+              <a href="#collections" class="btn-outline">View Collections</a>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────────────────
+         CTA BANNER
+    ────────────────────────────────────────────────────────────── -->
+    <section class="section section-alt" style="padding-bottom:4rem;">
+      <div class="cta-banner reveal">
+        <h2>Ready to Source Your Next<br>Fabric Collection?</h2>
+        <p>Connect with our team to discuss your requirements, request samples, or place a bulk order.</p>
+        <div class="cta-banner-buttons">
+          <a href="#contact" class="btn-white">Get In Touch</a>
+          <a href="#collections" class="btn-ghost-white">Browse Collections</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────────────────
+         SECTION 8: CONTACT
+    ────────────────────────────────────────────────────────────── -->
+    <section class="section" id="contact">
+      <div class="container">
+
+        <div class="section-header reveal">
+          <div class="section-tag">Contact Us</div>
+          <h2 class="section-heading">Let's Start a Conversation</h2>
+          <p class="section-subheading">
+            Whether you need a quote, a sample, or just want to talk fabrics — we're here for you.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+
+          <!-- Contact Info -->
+          <div class="contact-info reveal">
+
+            <p class="contact-intro">
+              Our team of textile specialists is available Monday through Saturday to help you source the perfect fabrics for your next project. We typically respond within 2–4 hours.
+            </p>
+
+            <div class="contact-details">
+              <div class="contact-detail">
+                <div class="contact-detail-icon icon-sage">📍</div>
+                <div class="contact-detail-text">
+                  <div class="label">Address</div>
+                  <div class="value">42 Textile Avenue, Industrial District<br>Mumbai, Maharashtra 400001, India</div>
+                </div>
+              </div>
+              <div class="contact-detail">
+                <div class="contact-detail-icon icon-blue">📞</div>
+                <div class="contact-detail-text">
+                  <div class="label">Phone</div>
+                  <div class="value">+91 98765 43210</div>
+                </div>
+              </div>
+              <div class="contact-detail">
+                <div class="contact-detail-icon icon-pink">✉️</div>
+                <div class="contact-detail-text">
+                  <div class="label">Email</div>
+                  <div class="value">hello@fabricore.com</div>
+                </div>
+              </div>
+              <div class="contact-detail">
+                <div class="contact-detail-icon icon-beige">🕐</div>
+                <div class="contact-detail-text">
+                  <div class="label">Business Hours</div>
+                  <div class="value">Mon – Sat: 9:00 AM – 6:00 PM IST</div>
+                </div>
+              </div>
+            </div>
+
+            <a href="https://wa.me/919876543210" class="whatsapp-btn" target="_blank">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              WhatsApp Us
+            </a>
+
+            <!-- Map Placeholder -->
+            <a
+              class="map-placeholder"
+              href="https://maps.google.com/?q=42+Textile+Avenue+Mumbai"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img
+                class="map-preview-image"
+                loading="lazy"
+                src="/storefront.jpg"
+                alt="Fabricore storefront in Mumbai's textile district"
+              />
+              <span class="map-preview-label">Visit our Mumbai studio</span>
+            </a>
+
+          </div>
+
+          <!-- Contact Form -->
+          <div class="contact-form-wrap reveal reveal-delay-2">
+            <div id="contactFormWrapper">
+              <div class="form-title">Send Us a Message</div>
+              <p class="form-subtitle">Tell us about your fabric requirements and we'll get back to you shortly.</p>
+
+              <form id="contactForm" onsubmit="handleFormSubmit(event)">
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName" placeholder="Your first name" required />
+                  </div>
+                  <div class="form-group">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName" placeholder="Your last name" required />
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="email">Email Address</label>
+                  <input type="email" id="email" placeholder="your@email.com" required />
+                </div>
+
+                <div class="form-group">
+                  <label for="phone">Phone Number</label>
+                  <input type="tel" id="phone" placeholder="+1 000 000 0000" />
+                </div>
+
+                <div class="form-group">
+                  <label for="interest">Fabric Interest</label>
+                  <select id="interest">
+                    <option value="">Select a fabric type...</option>
+                    <option>Cotton Bundles</option>
+                    <option>Linen Rolls</option>
+                    <option>Denim Fabrics</option>
+                    <option>Polyester Bundles</option>
+                    <option>Printed Fabrics</option>
+                    <option>Silk Blends</option>
+                    <option>Uniform Fabrics</option>
+                    <option>Custom Order</option>
+                    <option>Multiple / Other</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="message">Message</label>
+                  <textarea id="message" placeholder="Tell us about your requirements — quantity, specifications, timeline..." required></textarea>
+                </div>
+
+                <button type="submit" class="form-submit-btn">
+                  Send Message
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                </button>
+
+              </form>
+            </div>
+
+            <div class="form-success" id="formSuccess">
+              <div class="success-icon">✓</div>
+              <h3 style="font-family:var(--font-display);font-size:1.4rem;color:var(--text-primary);">Message Sent!</h3>
+              <p style="color:var(--text-secondary);font-size:0.9rem;line-height:1.7;">Thank you for reaching out. Our team will get back to you within 2–4 business hours.</p>
+              <button onclick="resetForm()" class="btn-sage" style="margin-top:0.5rem;">Send Another Message</button>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+  <!-- /main-content -->
+
+  <!-- ============================================================
+       FABRIC CATEGORY MODAL
+  ============================================================ -->
+  <div id="categoryModal" class="modal">
+    <div class="modal-overlay" onclick="closeCategoryModal()"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="modalTitle" class="modal-title"></h2>
+        <button class="modal-close" onclick="closeCategoryModal()">✕</button>
+      </div>
+      <div class="modal-body">
+        <div id="varietiesGrid" class="varieties-grid"></div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-sage" onclick="contactUs()">Get Quote</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer id="footer">
+    <div class="container">
+
+      <div class="footer-grid">
+
+        <div class="footer-brand">
+          <div class="nav-logo">
+            <div class="nav-logo-icon">
+              <svg viewBox="0 0 24 24" width="20" height="20" stroke="white" fill="none" stroke-width="2" stroke-linecap="round">
+                <path d="M3 7h18M3 12h18M3 17h18"/>
+                <circle cx="7" cy="7" r="1.5" fill="white" stroke="none"/>
+                <circle cx="12" cy="12" r="1.5" fill="white" stroke="none"/>
+                <circle cx="17" cy="17" r="1.5" fill="white" stroke="none"/>
+              </svg>
+            </div>
+            <span class="nav-logo-text">Fabri<span>core</span></span>
+          </div>
+          <p>Modern textile studio specializing in premium fabric bundles, rolls, and custom collections for fashion, retail, and interior markets worldwide.</p>
+          <div class="footer-social">
+            <a class="social-btn" href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a class="social-btn" href="https://linkedin.com" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.22 8h4.56v14H.22V8zm7.5 0h4.37v1.92h.06c.61-1.15 2.1-2.36 4.32-2.36 4.62 0 5.47 3.04 5.47 7v7.44h-4.55v-6.6c0-1.57-.03-3.6-2.2-3.6-2.2 0-2.54 1.72-2.54 3.49V22H7.72V8z"/></svg>
+            </a>
+            <a class="social-btn" href="https://pinterest.com" target="_blank" rel="noreferrer" aria-label="Pinterest">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.08 3.16 9.42 7.62 11.16-.11-.95-.2-2.4.04-3.44.22-.93 1.4-5.94 1.4-5.94s-.36-.72-.36-1.78c0-1.67.97-2.91 2.17-2.91 1.03 0 1.52.77 1.52 1.7 0 1.03-.66 2.58-1 4.01-.28 1.2.6 2.18 1.79 2.18 2.14 0 3.79-2.27 3.79-5.54 0-2.9-2.08-4.93-5.05-4.93-3.44 0-5.46 2.58-5.46 5.25 0 1.04.4 2.16.9 2.77.1.12.11.22.08.35l-.33 1.34c-.05.22-.17.27-.4.16-1.49-.69-2.42-2.87-2.42-4.62 0-3.76 2.73-7.21 7.88-7.21 4.13 0 7.34 2.95 7.34 6.88 0 4.11-2.59 7.42-6.18 7.42-1.21 0-2.34-.63-2.73-1.37l-.74 2.84c-.27 1.04-1 2.34-1.49 3.13C9.55 23.85 10.76 24 12 24c6.63 0 12-5.37 12-12S18.63 0 12 0z"/></svg>
+            </a>
+            <a class="social-btn" href="https://wa.me/919876543210" target="_blank" rel="noreferrer" aria-label="WhatsApp">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.46-2.4-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.87 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35M12.05 21.78h-.01a9.86 9.86 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26C2.16 6.45 6.6 2.01 12.05 2.01c2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.43 9.88-9.88 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.69 1.45h.01c6.55 0 11.89-5.34 11.89-11.89a11.82 11.82 0 0 0-3.49-8.41"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Quick Links</div>
+          <div class="footer-links">
+            <a href="#bundles">Featured Bundles</a>
+            <a href="#collections">Collections</a>
+            <a href="#fabrics">Fabric Types</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#about">About Us</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Fabrics</div>
+          <div class="footer-links">
+            <a href="#fabrics">Cotton</a>
+            <a href="#fabrics">Linen</a>
+            <a href="#fabrics">Denim</a>
+            <a href="#fabrics">Polyester</a>
+            <a href="#fabrics">Silk Blend</a>
+            <a href="#fabrics">Printed</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Contact</div>
+          <div class="footer-links">
+            <a href="mailto:hello@fabricore.com">hello@fabricore.com</a>
+            <a href="tel:+919876543210">+91 98765 43210</a>
+            <a href="#contact">Send Message</a>
+            <a href="#contact">Request Sample</a>
+            <a href="#contact">Bulk Orders</a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2024 Fabricore Textile Studio. All rights reserved.</p>
+        <div class="footer-legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Sitemap</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       SCROLL TO TOP BUTTON
+  ============================================================ -->
+  <button id="scroll-top-btn" onclick="scrollToTop()" aria-label="Scroll to top">
+    <svg viewBox="0 0 24 24"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+  </button>
