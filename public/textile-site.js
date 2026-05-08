@@ -599,6 +599,37 @@
   });
 
   /* ============================================================
+       FABRIC FILTER SYSTEM
+    ============================================================ */
+  window.filterFabrics = function (category, btn) {
+    // Update active button state
+    document.querySelectorAll(".filter-btn").forEach((b) => b.classList.remove("active"));
+    btn.classList.add("active");
+
+    const grid = document.getElementById("fabricsGrid");
+    if (!grid) return;
+    
+    const cards = grid.querySelectorAll(".fabric-card");
+
+    cards.forEach((card) => {
+      const cardCat = card.getAttribute("data-category");
+      if (category === "all" || cardCat === category) {
+        card.style.display = "flex";
+        card.classList.remove("hide-filter");
+        // Re-trigger reveal animation logic
+        setTimeout(() => {
+          card.classList.add("revealed");
+        }, 10);
+      } else {
+        card.classList.add("hide-filter");
+        setTimeout(() => {
+          card.style.display = "none";
+        }, 400); // Match CSS transition
+      }
+    });
+  };
+
+  /* ============================================================
        CANVAS READY SIGNAL
        ─────────────────────────────────────────────────────────────
        Dispatched when the hero scroll zone is initialized.

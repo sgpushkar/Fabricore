@@ -209,7 +209,7 @@
               <div class="bundle-card-desc">Breathable, versatile cotton fabrics in solid, striped, and textured weaves. Perfect for garments and homeware.</div>
               <div class="bundle-card-footer">
                 <div class="bundle-card-meta">
-                  <span>🎨</span> 24 Colors Available
+                  <img src="https://img.icons8.com/color/48/000000/color-palette.png" alt="palette" width="20" height="20" /> 24 Colors Available
                 </div>
                 <div class="bundle-card-arrow">
                   <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
@@ -228,7 +228,7 @@
               <div class="bundle-card-title">Linen Rolls</div>
               <div class="bundle-card-desc">Natural linen with a distinctive texture — ideal for summer collections, interior décor, and sustainable fashion.</div>
               <div class="bundle-card-footer">
-                <div class="bundle-card-meta"><span>📏</span> 30m – 500m Rolls</div>
+                <div class="bundle-card-meta"><img src="https://img.icons8.com/color/48/000000/ruler.png" alt="ruler" width="20" height="20" /> 30m – 500m Rolls</div>
                 <div class="bundle-card-arrow">
                   <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                 </div>
@@ -246,7 +246,7 @@
               <div class="bundle-card-title">Denim Fabrics</div>
               <div class="bundle-card-desc">Classic to stretch denim fabrics in various weights and washes — ready for bulk garment manufacturing.</div>
               <div class="bundle-card-footer">
-                <div class="bundle-card-meta"><span>⚖️</span> 6oz – 14oz Weights</div>
+                <div class="bundle-card-meta"><img src="https://img.icons8.com/color/48/000000/scales.png" alt="scales" width="20" height="20" /> 6oz – 14oz Weights</div>
                 <div class="bundle-card-arrow">
                   <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                 </div>
@@ -264,7 +264,7 @@
               <div class="bundle-card-title">Polyester Bundles</div>
               <div class="bundle-card-desc">High-performance polyester fabrics — wrinkle-resistant, colorfast, and perfect for activewear and uniforms.</div>
               <div class="bundle-card-footer">
-                <div class="bundle-card-meta"><span>✨</span> Anti-Wrinkle Finish</div>
+                <div class="bundle-card-meta"><img src="https://img.icons8.com/color/48/000000/sparkles.png" alt="sparkles" width="20" height="20" /> Anti-Wrinkle Finish</div>
                 <div class="bundle-card-arrow">
                   <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                 </div>
@@ -282,7 +282,7 @@
               <div class="bundle-card-title">Printed Fabrics</div>
               <div class="bundle-card-desc">Vibrant digital and screen-printed fabrics with hundreds of patterns — great for fashion, accessories, and crafts.</div>
               <div class="bundle-card-footer">
-                <div class="bundle-card-meta"><span>🖼️</span> 200+ Patterns</div>
+                <div class="bundle-card-meta"><img src="https://img.icons8.com/color/48/000000/painting.png" alt="painting" width="20" height="20" /> 200+ Patterns</div>
                 <div class="bundle-card-arrow">
                   <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                 </div>
@@ -300,7 +300,7 @@
               <div class="bundle-card-title">Silk Blends</div>
               <div class="bundle-card-desc">Luxurious silk blend fabrics with a natural sheen — crafted for premium garments and elegant occasions.</div>
               <div class="bundle-card-footer">
-                <div class="bundle-card-meta"><span>👑</span> Luxury Grade</div>
+                <div class="bundle-card-meta"><img src="https://img.icons8.com/color/48/000000/crown.png" alt="crown" width="20" height="20" /> Luxury Grade</div>
                 <div class="bundle-card-arrow">
                   <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                 </div>
@@ -450,89 +450,472 @@
     <!-- ──────────────────────────────────────────────────────────
          SECTION 3: FABRIC CATEGORIES
     ────────────────────────────────────────────────────────────── -->
-    <section class="section section-alt" id="fabrics">
+    <section class="section-catalog" id="fabrics">
       <div class="container">
 
-        <div class="section-header centered reveal">
-          <div class="section-tag">All Fabrics</div>
-          <h2 class="section-heading">Shop by Fabric Type</h2>
-          <p class="section-subheading">
-            Explore our complete range — from everyday cottons to premium silk blends.
+        <div class="catalog-header reveal">
+          <span class="catalog-tag">Our Collection</span>
+          <h2 class="catalog-title">Premium <span>Fabric</span> Catalog</h2>
+          <p class="section-subheading" style="color: #555; max-width: 600px;">
+            Explore our complete range of premium fabrics — from everyday cottons to luxurious silk blends and technical textiles.
           </p>
         </div>
 
-        <div class="categories-grid">
+        <div class="catalog-filters reveal reveal-delay-1">
+          <button class="filter-btn active" onclick="filterFabrics('all', this)">All Fabrics</button>
+          <button class="filter-btn" onclick="filterFabrics('cotton', this)">Cotton</button>
+          <button class="filter-btn" onclick="filterFabrics('linen', this)">Linen</button>
+          <button class="filter-btn" onclick="filterFabrics('denim', this)">Denim</button>
+          <button class="filter-btn" onclick="filterFabrics('polyester', this)">Polyester</button>
+          <button class="filter-btn" onclick="filterFabrics('silk', this)">Silk Blend</button>
+          <button class="filter-btn" onclick="filterFabrics('specialty', this)">Specialty</button>
+        </div>
 
-          <div class="category-card cat-sage reveal reveal-delay-1" onclick="openCategoryModal('cotton')" style="cursor: pointer;">
-            <div class="category-icon icon-sage">🧶</div>
-            <div>
-              <div class="category-name">Cotton</div>
-              <div class="category-count">48 varieties</div>
+        <div class="catalog-grid" id="fabricsGrid">
+
+          <!-- Cotton -->
+          <div class="fabric-card reveal reveal-delay-1" data-category="cotton">
+            <div class="fabric-card-image">
+              <img class="fabric-card-img-src" src="https://images.unsplash.com/photo-1519345182560-3f2917c472ef?auto=format&fit=crop&w=600&q=80" alt="Supima Cotton fabric texture" loading="lazy" />
             </div>
-            <div class="category-arrow">→</div>
+            <div class="fabric-card-content">
+              <h3 class="fabric-name">Supima Cotton</h3>
+              <p class="fabric-gsm">180 – 220 GSM • Premium Staple</p>
+              <p class="fabric-desc" style="font-size: 0.85rem; color: #9c9690; margin-bottom: 1.25rem;">Ultra-soft, durable, and breathable. Ideal for luxury t-shirts, bedding, and lightweight garments.</p>
+              <div class="fabric-colors">
+                <span class="color-swatch" style="background: #ffffff;"></span>
+                <span class="color-swatch" style="background: #1e1c19;"></span>
+                <span class="color-swatch" style="background: #7a9ab5;"></span>
+                <span class="color-swatch" style="background: #c9998e;"></span>
+              </div>
+              <div class="fabric-footer">
+                <span class="fabric-price">₹180/m</span>
+                <span class="fabric-status">In Stock</span>
+              </div>
+            </div>
           </div>
 
-          <div class="category-card cat-blue reveal reveal-delay-2" onclick="openCategoryModal('linen')" style="cursor: pointer;">
-            <div class="category-icon icon-blue">🌿</div>
-            <div>
-              <div class="category-name">Linen</div>
-              <div class="category-count">22 varieties</div>
+          <!-- Linen -->
+          <div class="fabric-card reveal reveal-delay-2" data-category="linen">
+            <div class="fabric-card-image">
+              <img class="fabric-card-img-src" src="https://images.unsplash.com/photo-1612817288484-6f916006741a?auto=format&fit=crop&w=600&q=80" alt="Belgian Linen fabric texture" loading="lazy" />
             </div>
-            <div class="category-arrow">→</div>
+            <div class="fabric-card-content">
+              <h3 class="fabric-name">Pure Belgian Linen</h3>
+              <p class="fabric-gsm">140 – 200 GSM • Natural Fiber</p>
+              <p class="fabric-desc" style="font-size: 0.85rem; color: #9c9690; margin-bottom: 1.25rem;">Crisp texture with exceptional breathability. Perfect for summer suits, dresses, and home decor.</p>
+              <div class="fabric-colors">
+                <span class="color-swatch" style="background: #f0ebe0;"></span>
+                <span class="color-swatch" style="background: #e0d8cc;"></span>
+                <span class="color-swatch" style="background: #8fa885;"></span>
+              </div>
+              <div class="fabric-footer">
+                <span class="fabric-price">₹450/m</span>
+                <span class="fabric-status">In Stock</span>
+              </div>
+            </div>
           </div>
 
-          <div class="category-card cat-sage reveal reveal-delay-3" onclick="openCategoryModal('denim')" style="cursor: pointer;">
-            <div class="category-icon icon-sage">👖</div>
-            <div>
-              <div class="category-name">Denim</div>
-              <div class="category-count">18 varieties</div>
+          <!-- Denim -->
+          <div class="fabric-card reveal reveal-delay-3" data-category="denim">
+            <div class="fabric-card-image">
+              <img class="fabric-card-img-src" src="https://images.unsplash.com/photo-1473966968600-fa801b869a1a?auto=format&fit=crop&w=600&q=80" alt="Selvedge Denim fabric texture" loading="lazy" />
             </div>
-            <div class="category-arrow">→</div>
+            <div class="fabric-card-content">
+              <h3 class="fabric-name">Selvedge Denim</h3>
+              <p class="fabric-gsm">12oz – 14.5oz • Raw Finish</p>
+              <p class="fabric-desc" style="font-size: 0.85rem; color: #9c9690; margin-bottom: 1.25rem;">Premium indigo-dyed denim with a classic red-line selvedge edge. Built for high-end jeans.</p>
+              <div class="fabric-colors">
+                <span class="color-swatch" style="background: #1a2a44;"></span>
+                <span class="color-swatch" style="background: #0f172a;"></span>
+                <span class="color-swatch" style="background: #475569;"></span>
+              </div>
+              <div class="fabric-footer">
+                <span class="fabric-price">₹320/m</span>
+                <span class="fabric-status limited">Limited</span>
+              </div>
+            </div>
           </div>
 
-          <div class="category-card cat-pink reveal reveal-delay-4" onclick="openCategoryModal('rayon')" style="cursor: pointer;">
-            <div class="category-icon icon-pink">🌊</div>
-            <div>
-              <div class="category-name">Rayon</div>
-              <div class="category-count">31 varieties</div>
+          <!-- Rayon (Specialty) -->
+          <div class="fabric-card reveal reveal-delay-4" data-category="specialty">
+            <div class="fabric-card-image">
+              <img class="fabric-card-img-src" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=600&q=80" alt="Bamboo Rayon soft draped fabric" loading="lazy" />
             </div>
-            <div class="category-arrow">→</div>
+            <div class="fabric-card-content">
+              <h3 class="fabric-name">Bamboo Rayon</h3>
+              <p class="fabric-gsm">115 GSM • Silk-like Feel</p>
+              <p class="fabric-desc" style="font-size: 0.85rem; color: #9c9690; margin-bottom: 1.25rem;">Sustainable, moisture-wicking, and incredibly soft with a beautiful drape. Great for loungewear.</p>
+              <div class="fabric-colors">
+                <span class="color-swatch" style="background: #e8efe4;"></span>
+                <span class="color-swatch" style="background: #c8d5c0;"></span>
+                <span class="color-swatch" style="background: #f5f5f5;"></span>
+              </div>
+              <div class="fabric-footer">
+                <span class="fabric-price">₹210/m</span>
+                <span class="fabric-status">In Stock</span>
+              </div>
+            </div>
           </div>
 
-          <div class="category-card cat-blue reveal reveal-delay-1" onclick="openCategoryModal('polyester')" style="cursor: pointer;">
-            <div class="category-icon icon-blue">🔮</div>
-            <div>
-              <div class="category-name">Polyester</div>
-              <div class="category-count">40 varieties</div>
+          <!-- Silk Blend (Silk) -->
+          <div class="fabric-card reveal reveal-delay-1" data-category="silk">
+            <div class="fabric-card-image">
+              <img class="fabric-card-img-src" src="https://images.unsplash.com/photo-1596755389378-c31d21fd1273?auto=format&fit=crop&w=600&q=80" alt="Silk-Cotton Blend lustrous texture" loading="lazy" />
             </div>
-            <div class="category-arrow">→</div>
+            <div class="fabric-card-content">
+              <h3 class="fabric-name">Silk-Cotton Blend</h3>
+              <p class="fabric-gsm">85 – 120 GSM • Luxury Shine</p>
+              <p class="fabric-desc" style="font-size: 0.85rem; color: #9c9690; margin-bottom: 1.25rem;">Combines the luster of silk with the comfort of cotton. Ideal for evening wear and scarves.</p>
+              <div class="fabric-colors">
+                <span class="color-swatch" style="background: #fdfcf0;"></span>
+                <span class="color-swatch" style="background: #e8cfc8;"></span>
+                <span class="color-swatch" style="background: #f5e8e4;"></span>
+              </div>
+              <div class="fabric-footer">
+                <span class="fabric-price">₹580/m</span>
+                <span class="fabric-status limited">Limited</span>
+              </div>
+            </div>
           </div>
 
-          <div class="category-card cat-pink reveal reveal-delay-2" onclick="openCategoryModal('printed')" style="cursor: pointer;">
-            <div class="category-icon icon-pink">🎨</div>
-            <div>
-              <div class="category-name">Printed Fabrics</div>
-              <div class="category-count">200+ designs</div>
+          <!-- Fleece (Polyester) -->
+          <div class="fabric-card reveal reveal-delay-2" data-category="polyester">
+            <div class="fabric-card-image">
+              <img class="fabric-card-img-src" src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?auto=format&fit=crop&w=600&q=80" alt="Polar Fleece soft warm fabric" loading="lazy" />
             </div>
-            <div class="category-arrow">→</div>
+            <div class="fabric-card-content">
+              <h3 class="fabric-name">Polar Fleece</h3>
+              <p class="fabric-gsm">280 – 350 GSM • Thermal</p>
+              <p class="fabric-desc" style="font-size: 0.85rem; color: #9c9690; margin-bottom: 1.25rem;">Warm, lightweight, and fast-drying. The ultimate fabric for winter hoodies and blankets.</p>
+              <div class="fabric-colors">
+                <span class="color-swatch" style="background: #1e1c19;"></span>
+                <span class="color-swatch" style="background: #4a4640;"></span>
+                <span class="color-swatch" style="background: #7a9ab5;"></span>
+                <span class="color-swatch" style="background: #8fa885;"></span>
+              </div>
+              <div class="fabric-footer">
+                <span class="fabric-price">₹260/m</span>
+                <span class="fabric-status">In Stock</span>
+              </div>
+            </div>
           </div>
 
-          <div class="category-card cat-beige reveal reveal-delay-3" onclick="openCategoryModal('uniform')" style="cursor: pointer;">
-            <div class="category-icon icon-beige">🏭</div>
-            <div>
-              <div class="category-name">Uniform Fabrics</div>
-              <div class="category-count">15 varieties</div>
+          <!-- French Terry (Cotton) -->
+          <div class="fabric-card reveal reveal-delay-3" data-category="cotton">
+            <div class="fabric-card-image">
+              <img class="fabric-card-img-src" src="https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=600&q=80" alt="French Terry cotton knit fabric" loading="lazy" />
             </div>
-            <div class="category-arrow">→</div>
+            <div class="fabric-card-content">
+              <h3 class="fabric-name">French Terry</h3>
+              <p class="fabric-gsm">240 – 320 GSM • Loopback</p>
+              <p class="fabric-desc" style="font-size: 0.85rem; color: #9c9690; margin-bottom: 1.25rem;">Features soft loops on the inside. Ideal for high-end activewear, sweatshirts, and joggers.</p>
+              <div class="fabric-colors">
+                <span class="color-swatch" style="background: #edebe6;"></span>
+                <span class="color-swatch" style="background: #b5b0a6;"></span>
+                <span class="color-swatch" style="background: #7a9ab5;"></span>
+              </div>
+              <div class="fabric-footer">
+                <span class="fabric-price">₹240/m</span>
+                <span class="fabric-status">In Stock</span>
+              </div>
+            </div>
           </div>
 
-          <div class="category-card cat-sage reveal reveal-delay-4" onclick="openCategoryModal('silk')" style="cursor: pointer;">
-            <div class="category-icon icon-sage">✨</div>
-            <div>
-              <div class="category-name">Silk Blend</div>
-              <div class="category-count">12 varieties</div>
+          <!-- Printed (Specialty) -->
+          <div class="fabric-card reveal reveal-delay-4" data-category="specialty">
+            <div class="fabric-card-image">
+              <img class="fabric-card-img-src" src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&w=600&q=80" alt="Digital Print Satin vibrant fabric" loading="lazy" />
             </div>
-            <div class="category-arrow">→</div>
+            <div class="fabric-card-content">
+              <h3 class="fabric-name">Digital Print Satin</h3>
+              <p class="fabric-gsm">110 GSM • High-Res Prints</p>
+              <p class="fabric-desc" style="font-size: 0.85rem; color: #9c9690; margin-bottom: 1.25rem;">Vibrant patterns on a smooth satin base. Perfect for statement pieces and accessories.</p>
+              <div class="fabric-colors">
+                <span class="color-swatch" style="background: #f5e8e4;"></span>
+                <span class="color-swatch" style="background: #c9998e;"></span>
+                <span class="color-swatch" style="background: #8fa885;"></span>
+                <span class="color-swatch" style="background: #7a9ab5;"></span>
+              </div>
+              <div class="fabric-footer">
+                <span class="fabric-price">₹310/m</span>
+                <span class="fabric-status">In Stock</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Velvet (Specialty) -->
+          <div class="fabric-card reveal reveal-delay-1" data-category="specialty">
+            <div class="fabric-card-image">
+              <img class="fabric-card-img-src" src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&w=600&q=80" alt="Plush Velvet luxurious fabric" loading="lazy" />
+            </div>
+            <div class="fabric-card-content">
+              <h3 class="fabric-name">Plush Velvet</h3>
+              <p class="fabric-gsm">250 GSM • High Pile</p>
+              <p class="fabric-desc" style="font-size: 0.85rem; color: #9c9690; margin-bottom: 1.25rem;">Luxurious, dense pile with a rich sheen. Used for premium upholstery and evening attire.</p>
+              <div class="fabric-colors">
+                <span class="color-swatch" style="background: #450a0a;"></span>
+                <span class="color-swatch" style="background: #1e1b4b;"></span>
+                <span class="color-swatch" style="background: #1e1c19;"></span>
+              </div>
+              <div class="fabric-footer">
+                <span class="fabric-price">₹620/m</span>
+                <span class="fabric-status limited">Limited</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hemp (Specialty) -->
+          <div class="fabric-card reveal reveal-delay-2" data-category="specialty">
+            <div class="fabric-card-image">
+              <img class="fabric-card-img-src" src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=600&q=80" alt="Organic Hemp natural fiber" loading="lazy" />
+            </div>
+            <div class="fabric-card-content">
+              <h3 class="fabric-name">Organic Hemp</h3>
+              <p class="fabric-gsm">200 GSM • Sustainable</p>
+              <p class="fabric-desc" style="font-size: 0.85rem; color: #9c9690; margin-bottom: 1.25rem;">Extremely durable and eco-friendly. Softens with every wash. Great for rugged apparel.</p>
+              <div class="fabric-colors">
+                <span class="color-swatch" style="background: #f5f5f4;"></span>
+                <span class="color-swatch" style="background: #d6d3d1;"></span>
+                <span class="color-swatch" style="background: #a8a29e;"></span>
+              </div>
+              <div class="fabric-footer">
+                <span class="fabric-price">₹480/m</span>
+                <span class="fabric-status">In Stock</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Muslin (Cotton) -->
+          <div class="fabric-card reveal reveal-delay-3" data-category="cotton">
+            <div class="fabric-card-image">
+              <img class="fabric-card-img-src" src="https://images.unsplash.com/photo-1519345182560-3f2917c472ef?auto=format&fit=crop&w=600&q=80" alt="Fine Muslin delicate woven fabric" loading="lazy" />
+            </div>
+            <div class="fabric-card-content">
+              <h3 class="fabric-name">Fine Muslin</h3>
+              <p class="fabric-gsm">80 GSM • Lightweight</p>
+              <p class="fabric-desc" style="font-size: 0.85rem; color: #9c9690; margin-bottom: 1.25rem;">Delicate, loosely woven cotton. Ideal for garment prototypes, swaddling, and summer layers.</p>
+              <div class="fabric-colors">
+                <span class="color-swatch" style="background: #ffffff;"></span>
+                <span class="color-swatch" style="background: #fdfcf0;"></span>
+                <span class="color-swatch" style="background: #edebe6;"></span>
+              </div>
+              <div class="fabric-footer">
+                <span class="fabric-price">₹120/m</span>
+                <span class="fabric-status">In Stock</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Jacquard (Specialty) -->
+          <div class="fabric-card reveal reveal-delay-4" data-category="specialty">
+            <div class="fabric-card-image">
+              <img class="fabric-card-img-src" src="https://images.unsplash.com/photo-1558618047-3c8c76ca1fc7?auto=format&fit=crop&w=600&q=80" alt="Floral Jacquard woven pattern" loading="lazy" />
+            </div>
+            <div class="fabric-card-content">
+              <h3 class="fabric-name">Floral Jacquard</h3>
+              <p class="fabric-gsm">280 GSM • Intricate Weave</p>
+              <p class="fabric-desc" style="font-size: 0.85rem; color: #9c9690; margin-bottom: 1.25rem;">Complex patterns woven directly into the fabric. Perfect for luxury jackets and drapery.</p>
+              <div class="fabric-colors">
+                <span class="color-swatch" style="background: #4a4640;"></span>
+                <span class="color-swatch" style="background: #e0d8cc;"></span>
+                <span class="color-swatch" style="background: #7a9ab5;"></span>
+              </div>
+              <div class="fabric-footer">
+                <span class="fabric-price">₹750/m</span>
+                <span class="fabric-status limited">Limited</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tweed (Specialty) -->
+          <div class="fabric-card reveal reveal-delay-1" data-category="specialty">
+            <div class="fabric-card-image">
+              <img class="fabric-card-img-src" src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?auto=format&fit=crop&w=600&q=80" alt="Harris Tweed heritage wool fabric" loading="lazy" />
+            </div>
+            <div class="fabric-card-content">
+              <h3 class="fabric-name">Harris Tweed</h3>
+              <p class="fabric-gsm">350 GSM • Heritage Wool</p>
+              <p class="fabric-desc" style="font-size: 0.85rem; color: #9c9690; margin-bottom: 1.25rem;">Hand-woven, rough-textured wool. Iconic choice for blazers, coats, and accessories.</p>
+              <div class="fabric-colors">
+                <span class="color-swatch" style="background: #3f3f3f;"></span>
+                <span class="color-swatch" style="background: #4c4c4c;"></span>
+                <span class="color-swatch" style="background: #2b2b2b;"></span>
+              </div>
+              <div class="fabric-footer">
+                <span class="fabric-price">₹980/m</span>
+                <span class="fabric-status">In Stock</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Jersey (Cotton) -->
+          <div class="fabric-card reveal reveal-delay-2" data-category="cotton">
+            <div class="fabric-card-image">
+              <img class="fabric-card-img-src" src="https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=600&q=80" alt="Cotton Jersey knit stretch fabric" loading="lazy" />
+            </div>
+            <div class="fabric-card-content">
+              <h3 class="fabric-name">Cotton Jersey</h3>
+              <p class="fabric-gsm">160 GSM • Stretch Knit</p>
+              <p class="fabric-desc" style="font-size: 0.85rem; color: #9c9690; margin-bottom: 1.25rem;">Soft, single-knit fabric with natural stretch. The standard for everyday t-shirts and comfort wear.</p>
+              <div class="fabric-colors">
+                <span class="color-swatch" style="background: #ffffff;"></span>
+                <span class="color-swatch" style="background: #1e1c19;"></span>
+                <span class="color-swatch" style="background: #dce9f3;"></span>
+                <span class="color-swatch" style="background: #8fa885;"></span>
+              </div>
+              <div class="fabric-footer">
+                <span class="fabric-price">₹140/m</span>
+                <span class="fabric-status">In Stock</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Poplin (Cotton) -->
+          <div class="fabric-card reveal reveal-delay-3" data-category="cotton">
+            <div class="fabric-card-image">
+              <img class="fabric-card-img-src" src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=600&q=80" alt="Cotton Poplin crisp plain weave shirt" loading="lazy" />
+            </div>
+            <div class="fabric-card-content">
+              <h3 class="fabric-name">Cotton Poplin</h3>
+              <p class="fabric-gsm">120 GSM • Crisp Weave</p>
+              <p class="fabric-desc" style="font-size: 0.85rem; color: #9c9690; margin-bottom: 1.25rem;">Tight, plain weave with a smooth surface. Best for dress shirts, blouses, and light uniforms.</p>
+              <div class="fabric-colors">
+                <span class="color-swatch" style="background: #ffffff;"></span>
+                <span class="color-swatch" style="background: #dce9f3;"></span>
+                <span class="color-swatch" style="background: #edebe6;"></span>
+              </div>
+              <div class="fabric-footer">
+                <span class="fabric-price">₹200/m</span>
+                <span class="fabric-status">In Stock</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Suede (Specialty) -->
+          <div class="fabric-card reveal reveal-delay-4" data-category="specialty">
+            <div class="fabric-card-image">
+              <img class="fabric-card-img-src" src="https://images.unsplash.com/photo-1596755389378-c31d21fd1273?auto=format&fit=crop&w=600&q=80" alt="Faux Suede brushed textile" loading="lazy" />
+            </div>
+            <div class="fabric-card-content">
+              <h3 class="fabric-name">Faux Suede</h3>
+              <p class="fabric-gsm">260 GSM • Brushed Finish</p>
+              <p class="fabric-desc" style="font-size: 0.85rem; color: #9c9690; margin-bottom: 1.25rem;">Soft, velvet-like finish mimicking real suede. Durable and easy to clean. Great for jackets.</p>
+              <div class="fabric-colors">
+                <span class="color-swatch" style="background: #92400e;"></span>
+                <span class="color-swatch" style="background: #78350f;"></span>
+                <span class="color-swatch" style="background: #451a03;"></span>
+              </div>
+              <div class="fabric-footer">
+                <span class="fabric-price">₹350/m</span>
+                <span class="fabric-status">In Stock</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Organza (Silk) -->
+          <div class="fabric-card reveal reveal-delay-1" data-category="silk">
+            <div class="fabric-card-image">
+              <img class="fabric-card-img-src" src="https://images.unsplash.com/photo-1519345182560-3f2917c472ef?auto=format&fit=crop&w=600&q=80" alt="Pure Organza sheer fabric" loading="lazy" />
+            </div>
+            <div class="fabric-card-content">
+              <h3 class="fabric-name">Pure Organza</h3>
+              <p class="fabric-gsm">25 GSM • Sheer & Stiff</p>
+              <p class="fabric-desc" style="font-size: 0.85rem; color: #9c9690; margin-bottom: 1.25rem;">A thin, plain weave, sheer fabric traditionally made from silk. Used for bridal wear and evening gowns.</p>
+              <div class="fabric-colors">
+                <span class="color-swatch" style="background: #ffffff;"></span>
+                <span class="color-swatch" style="background: #fdfcf0;"></span>
+                <span class="color-swatch" style="background: #f5e8e4;"></span>
+              </div>
+              <div class="fabric-footer">
+                <span class="fabric-price">₹280/m</span>
+                <span class="fabric-status">In Stock</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Gabardine (Polyester) -->
+          <div class="fabric-card reveal reveal-delay-2" data-category="polyester">
+            <div class="fabric-card-image">
+              <img class="fabric-card-img-src" src="https://images.unsplash.com/photo-1612817288484-6f916006741a?auto=format&fit=crop&w=600&q=80" alt="Gabardine Twill suiting fabric" loading="lazy" />
+            </div>
+            <div class="fabric-card-content">
+              <h3 class="fabric-name">Gabardine Twill</h3>
+              <p class="fabric-gsm">280 GSM • Durable</p>
+              <p class="fabric-desc" style="font-size: 0.85rem; color: #9c9690; margin-bottom: 1.25rem;">A tough, tightly woven fabric used to make suits, overcoats, and trousers. Very wrinkle resistant.</p>
+              <div class="fabric-colors">
+                <span class="color-swatch" style="background: #1e1c19;"></span>
+                <span class="color-swatch" style="background: #4a4640;"></span>
+                <span class="color-swatch" style="background: #1d4ed8;"></span>
+              </div>
+              <div class="fabric-footer">
+                <span class="fabric-price">₹310/m</span>
+                <span class="fabric-status">In Stock</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Plaid (Cotton) -->
+          <div class="fabric-card reveal reveal-delay-3" data-category="cotton">
+            <div class="fabric-card-image">
+              <img class="fabric-card-img-src" src="https://images.unsplash.com/photo-1473966968600-fa801b869a1a?auto=format&fit=crop&w=600&q=80" alt="Plaid Flannel checkered fabric" loading="lazy" />
+            </div>
+            <div class="fabric-card-content">
+              <h3 class="fabric-name">Plaid Flannel</h3>
+              <p class="fabric-gsm">210 GSM • Brushed Cotton</p>
+              <p class="fabric-desc" style="font-size: 0.85rem; color: #9c9690; margin-bottom: 1.25rem;">Soft, warm cotton with a classic checkered pattern. Perfect for winter shirts and loungewear.</p>
+              <div class="fabric-colors">
+                <span class="color-swatch" style="background: #7f1d1d;"></span>
+                <span class="color-swatch" style="background: #064e3b;"></span>
+                <span class="color-swatch" style="background: #1e1b4b;"></span>
+              </div>
+              <div class="fabric-footer">
+                <span class="fabric-price">₹260/m</span>
+                <span class="fabric-status">In Stock</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Chambray (Linen/Cotton) -->
+          <div class="fabric-card reveal reveal-delay-4" data-category="linen">
+            <div class="fabric-card-image">
+              <img class="fabric-card-img-src" src="https://images.unsplash.com/photo-1519345182560-3f2917c472ef?auto=format&fit=crop&w=600&q=80" alt="Chambray Weave woven fabric" loading="lazy" />
+            </div>
+            <div class="fabric-card-content">
+              <h3 class="fabric-name">Chambray Weave</h3>
+              <p class="fabric-gsm">135 GSM • Indigo Dyed</p>
+              <p class="fabric-desc" style="font-size: 0.85rem; color: #9c9690; margin-bottom: 1.25rem;">Looks like denim but feels much lighter. Ideal for work shirts, dresses, and children's clothing.</p>
+              <div class="fabric-colors">
+                <span class="color-swatch" style="background: #93c5fd;"></span>
+                <span class="color-swatch" style="background: #60a5fa;"></span>
+                <span class="color-swatch" style="background: #dbeafe;"></span>
+              </div>
+              <div class="fabric-footer">
+                <span class="fabric-price">₹220/m</span>
+                <span class="fabric-status">In Stock</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bengaline (Specialty) -->
+          <div class="fabric-card reveal reveal-delay-1" data-category="specialty">
+            <div class="fabric-card-image">
+              <img class="fabric-card-img-src" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=600&q=80" alt="Stretch Bengaline ribbed fabric" loading="lazy" />
+            </div>
+            <div class="fabric-card-content">
+              <h3 class="fabric-name">Stretch Bengaline</h3>
+              <p class="fabric-gsm">240 GSM • Ribbed Texture</p>
+              <p class="fabric-desc" style="font-size: 0.85rem; color: #9c9690; margin-bottom: 1.25rem;">Features a distinct crosswise rib. Highly elastic and durable, used mostly for fitted trousers.</p>
+              <div class="fabric-colors">
+                <span class="color-swatch" style="background: #1e1c19;"></span>
+                <span class="color-swatch" style="background: #4a4640;"></span>
+                <span class="color-swatch" style="background: #fdfcf0;"></span>
+              </div>
+              <div class="fabric-footer">
+                <span class="fabric-price">₹290/m</span>
+                <span class="fabric-status limited">Limited</span>
+              </div>
+            </div>
           </div>
 
         </div>
