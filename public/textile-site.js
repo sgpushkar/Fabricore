@@ -35,14 +35,22 @@
   window.heroScrollProgress = 0;
   window.heroIsActive = true;
 
+  let zoneH = heroScrollZone.offsetHeight;
+  let viewH = window.innerHeight;
+  let available = zoneH - viewH;
+
+  function handleResize() {
+    zoneH = heroScrollZone.offsetHeight;
+    viewH = window.innerHeight;
+    available = zoneH - viewH;
+    onScroll(); // Recalculate
+  }
+
   function updateHeroScroll() {
     const zoneRect = heroScrollZone.getBoundingClientRect();
-    const zoneH = heroScrollZone.offsetHeight;
-    const viewH = window.innerHeight;
 
     // How far we've scrolled into the zone (past first viewport)
     const scrolled = -zoneRect.top; // 0 at start
-    const available = zoneH - viewH; // total scrollable distance
     const progress = Math.max(0, Math.min(1, scrolled / available));
 
     window.heroScrollProgress = progress;
@@ -135,7 +143,7 @@
     },
     {
       threshold: 0.12,
-      rootMargin: "0px 0px -40px 0px",
+      rootMargin: "0px 0px -10% 0px",
     },
   );
 
@@ -146,13 +154,22 @@
   /* ============================================================
        MASTER SCROLL HANDLER
     ============================================================ */
+  let scrollTicking = false;
+
   function onScroll() {
-    updateHeroScroll();
-    updateNavbar();
-    updateScrollTopBtn();
+    if (!scrollTicking) {
+      requestAnimationFrame(() => {
+        updateHeroScroll();
+        updateNavbar();
+        updateScrollTopBtn();
+        scrollTicking = false;
+      });
+      scrollTicking = true;
+    }
   }
 
   window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", handleResize, { passive: true });
   onScroll(); // Run once on load
 
   /* ============================================================

@@ -59,7 +59,13 @@
 
     body {
       font-family: var(--font-body);
-      background: linear-gradient(160deg, #f2f6f0 0%, #edf3ea 40%, #f0f5ee 100%);
+      background-color: #f2f6f0;
+      background-image: 
+        radial-gradient(circle at 0% 0%, rgba(143, 168, 133, 0.12) 0%, transparent 35%),
+        radial-gradient(circle at 100% 100%, rgba(184, 218, 165, 0.1) 0%, transparent 40%),
+        linear-gradient(160deg, #f2f6f0 0%, #edf3ea 40%, #f0f5ee 100%),
+        url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h20v20H0z' fill='none'/%3E%3Ccircle cx='1' cy='1' r='0.5' fill='rgba(0,0,0,0.03)'/%3E%3C/svg%3E");
+      background-attachment: fixed;
       color: var(--text-primary);
       line-height: 1.6;
       overflow-x: hidden;
@@ -128,6 +134,7 @@
       transform: translateY(36px);
       transition: opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),
                   transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);
+      will-change: transform, opacity;
     }
 
     .reveal.revealed {
@@ -156,12 +163,10 @@
     }
 
     #navbar .nav-inner {
-      background: linear-gradient(180deg, rgba(22, 26, 29, 0.5) 0%, rgba(22, 26, 29, 0.3) 100%);
-      backdrop-filter: blur(20px) saturate(1.1);
-      -webkit-backdrop-filter: blur(20px) saturate(1.1);
-      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(242, 246, 240, 0.98);
+      border: 1px solid rgba(0,0,0,0.06);
       border-radius: 999px;
-      padding: 0.85rem 1rem;
+      padding: 1rem 1.85rem;
       box-shadow: 0 20px 52px rgba(0,0,0,0.16);
     }
 
@@ -527,13 +532,9 @@
       position: absolute;
       inset: 0;
       z-index: 0;
-      /*
-        FUTURE INTEGRATION:
-        Add your <canvas id="hero-anim-canvas"> inside this div.
-        Set canvas width/height to match container via JS.
-        Drive frames using window.heroScrollProgress.
-      */
-      background: linear-gradient(135deg, #d8eecd 0%, #c5dfba 40%, #d5e8ca 100%);
+      background-image: 
+        linear-gradient(135deg, #d8eecd 0%, #c5dfba 40%, #d5e8ca 100%),
+        url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h20v20H0z' fill='none'/%3E%3Ccircle cx='1' cy='1' r='0.5' fill='rgba(0,0,0,0.03)'/%3E%3C/svg%3E");
       overflow: hidden;
     }
 
@@ -575,10 +576,10 @@
       inset: 0;
       z-index: 1;
       background-image:
-        radial-gradient(ellipse at center, rgba(20, 24, 28, 0) 0%, rgba(20, 24, 28, 0.18) 55%, rgba(20, 24, 28, 0.55) 100%),
         url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpath d='M0 0h60v60H0z' fill='none'/%3E%3Cpath d='M10 10 L50 10 L50 50 L10 50 Z' stroke='rgba(0,0,0,0.018)' stroke-width='1' fill='none'/%3E%3C/svg%3E");
       pointer-events: none;
       opacity: 1;
+      will-change: opacity;
     }
 
     /* ── LAYER 2 — Decorative floating elements ── */
@@ -587,6 +588,7 @@
       inset: 0;
       z-index: 2;
       pointer-events: none;
+      will-change: transform, opacity;
     }
 
     .hero-deco-pill {
@@ -596,9 +598,8 @@
       font-weight: 700;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      padding: 0.7rem 1rem 0.72rem;
-      backdrop-filter: blur(14px) saturate(1.08);
-      -webkit-backdrop-filter: blur(14px) saturate(1.08);
+      padding: 0.85rem 1.6rem;
+      background: rgba(255, 255, 255, 0.95);
       white-space: nowrap;
       box-shadow: 0 16px 34px rgba(10, 14, 18, 0.16);
       animation: floatPill 6.5s ease-in-out infinite;
@@ -788,16 +789,15 @@
       text-align: center;
       padding: 6rem 2rem 4rem;
       transition: opacity 0.5s ease, transform 0.5s ease;
+      will-change: transform, opacity;
     }
 
     .hero-eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      padding: 7px 18px 7px 10px;
-      background: rgba(255,255,255,0.18);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      padding: 10px 22px 10px 14px;
+      background: rgba(255,255,255,0.25);
       border: 1px solid rgba(255,255,255,0.22);
       border-radius: 100px;
       margin-bottom: 2.2rem;
@@ -982,12 +982,12 @@
       position: relative;
       z-index: 10;
       background: linear-gradient(180deg,
-        #f2f6f0 0%,
-        #edf3ea 20%,
-        #f5f8f3 40%,
-        #edf2eb 60%,
-        #f2f6f0 80%,
-        #e8f0e6 100%
+        rgba(242, 246, 240, 0.8) 0%,
+        rgba(237, 243, 234, 0.8) 20%,
+        rgba(245, 248, 243, 0.8) 40%,
+        rgba(237, 242, 235, 0.8) 60%,
+        rgba(242, 246, 240, 0.8) 80%,
+        rgba(232, 240, 230, 0.8) 100%
       );
     }
 
@@ -996,15 +996,17 @@
       padding: 8rem 0;
       position: relative;
       overflow: hidden;
+      content-visibility: auto;
+      contain-intrinsic-size: 1px 500px;
     }
 
     /* Every section gets a unique sage gradient angle for visual rhythm */
     .section-alt {
-      background: linear-gradient(135deg, #edf5e9 0%, #e3ede0 50%, #eaf1e7 100%);
+      background: linear-gradient(135deg, rgba(237, 245, 233, 0.9) 0%, rgba(227, 237, 224, 0.9) 50%, rgba(234, 241, 231, 0.9) 100%);
     }
 
     .section-cream {
-      background: linear-gradient(160deg, #f5f9f3 0%, #ecf2e9 50%, #f2f7f0 100%);
+      background: linear-gradient(160deg, rgba(245, 249, 243, 0.9) 0%, rgba(236, 242, 233, 0.9) 50%, rgba(242, 247, 240, 0.9) 100%);
     }
 
     /* Floating ambient glow blobs — alternating positions per child */
@@ -1013,10 +1015,11 @@
       position: absolute;
       width: 900px;
       height: 900px;
-      background: radial-gradient(circle, rgba(143, 168, 133, 0.07) 0%, transparent 65%);
-      filter: blur(120px);
+      background: radial-gradient(circle, rgba(143, 168, 133, 0.08) 0%, transparent 65%);
+      filter: blur(60px);
       pointer-events: none;
       z-index: 0;
+      animation: drift 25s ease-in-out infinite alternate;
     }
 
     .section::after {
@@ -1024,10 +1027,17 @@
       position: absolute;
       width: 600px;
       height: 600px;
-      background: radial-gradient(circle, rgba(168, 200, 158, 0.05) 0%, transparent 70%);
-      filter: blur(80px);
+      background: radial-gradient(circle, rgba(168, 200, 158, 0.06) 0%, transparent 70%);
+      filter: blur(40px);
       pointer-events: none;
       z-index: 0;
+      animation: drift 18s ease-in-out infinite alternate-reverse;
+    }
+
+    @keyframes drift {
+      0% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(30px, -20px) scale(1.05); }
+      100% { transform: translate(-20px, 30px) scale(0.95); }
     }
 
     .section:nth-child(odd)::before  { top: -15%;  left: -10%; }
@@ -1066,16 +1076,16 @@
     }
 
     .bundle-card {
-      background: var(--warm-white);
+      background: rgba(248, 250, 247, 0.95);
       border-radius: var(--radius-lg);
       overflow: hidden;
-      border: 1px solid rgba(0,0,0,0.04);
+      border: 1px solid rgba(255, 255, 255, 0.4);
       transition: var(--transition);
       cursor: pointer;
       display: flex;
       flex-direction: column;
       height: 100%;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03), 0 1px 2px rgba(0,0,0,0.02);
     }
 
     .bundle-card:hover {
@@ -2855,14 +2865,14 @@
     }
 
     .fabric-card {
-      background: #ffffff;
+      background: rgba(255, 255, 255, 0.95);
       border-radius: 20px;
       overflow: hidden;
-      border: 1px solid rgba(0, 0, 0, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.5);
       transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
       display: flex;
       flex-direction: column;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.04);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03), 0 1px 2px rgba(0, 0, 0, 0.02);
     }
 
     .fabric-card:hover {

@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef } from "react";
 import siteCssUrl from "../textile-site.css?url";
+import redesignCssUrl from "../textile-redesign.css?url";
 import siteBody from "../textile-site.body.html?raw";
 
 export const Route = createFileRoute("/")({
@@ -48,6 +49,7 @@ export const Route = createFileRoute("/")({
         href: "https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap",
       },
       { rel: "stylesheet", href: siteCssUrl },
+      { rel: "stylesheet", href: redesignCssUrl },
     ],
   }),
   component: Index,

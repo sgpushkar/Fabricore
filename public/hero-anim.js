@@ -39,7 +39,7 @@
     let pendingDraw = false;
 
     function resize() {
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
       const rect = pinWrapper.getBoundingClientRect();
       canvas.width = Math.max(1, Math.floor(rect.width * dpr));
       canvas.height = Math.max(1, Math.floor(rect.height * dpr));
@@ -51,7 +51,7 @@
     function drawFrame(img) {
       if (!img || !img.complete || !img.naturalWidth) return;
 
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
       const cw = canvas.width / dpr;
       const ch = canvas.height / dpr;
       const ir = img.naturalWidth / img.naturalHeight;
@@ -78,23 +78,43 @@
       ctx.drawImage(img, dx, dy, dw, dh);
     }
 
+    let interpolatedProgress = 0;
+    let targetProgress = 0;
+
     function render() {
-      pendingDraw = false;
+      // 1. Update target from global scroll state
+      targetProgress = Math.max(0, Math.min(1, window.heroScrollProgress || 0));
 
-      const progress = Math.max(0, Math.min(1, window.heroScrollProgress || 0));
-      const target = Math.min(TOTAL_FRAMES - 1, Math.floor(progress * (TOTAL_FRAMES - 1)));
-
-      if (target === currentFrame) return;
-
-      let idx = target;
-      while (idx >= 0 && (!frames[idx] || !frames[idx].complete || !frames[idx].naturalWidth)) {
-        idx -= 1;
+      // 2. Linear interpolation (Lerp) for smoothness
+      const lerpFactor = 0.08;
+      const delta = targetProgress - interpolatedProgress;
+      
+      if (Math.abs(delta) > 0.0001) {
+        interpolatedProgress += delta * lerpFactor;
+      } else {
+        interpolatedProgress = targetProgress;
+        pendingDraw = false;
+        // Stop the loop when settled
+        return; 
       }
 
-      if (idx < 0) return;
+      // 3. Map interpolated progress to frame index
+      const targetFrameIdx = Math.min(TOTAL_FRAMES - 1, Math.floor(interpolatedProgress * (TOTAL_FRAMES - 1)));
 
-      drawFrame(frames[idx]);
-      currentFrame = target;
+      if (targetFrameIdx !== currentFrame) {
+        let idx = targetFrameIdx;
+        while (idx >= 0 && (!frames[idx] || !frames[idx].complete || !frames[idx].naturalWidth)) {
+          idx -= 1;
+        }
+
+        if (idx >= 0) {
+          drawFrame(frames[idx]);
+          currentFrame = targetFrameIdx;
+        }
+      }
+
+      // 4. Continue the loop
+      requestAnimationFrame(render);
     }
 
     function schedule() {
