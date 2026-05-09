@@ -1147,7 +1147,67 @@
   border: 1px solid var(--rd-line) !important;
   color: var(--rd-ink) !important;
 }
+/* ===========================================================
+   NAVBAR (Redesign Overrides)
+=========================================================== */
+#navbar .nav-inner {
+  background: var(--rd-paper) !important;
+  border: 1px solid var(--rd-line) !important;
+  box-shadow: var(--rd-shadow-soft) !important;
+  padding: 1rem 1.85rem !important;
+  border-radius: 999px !important;
+}
 
+#navbar.scrolled .nav-inner {
+  background: var(--rd-paper) !important;
+  border-color: var(--rd-line) !important;
+  box-shadow: var(--rd-shadow) !important;
+}
+
+.nav-logo-icon {
+  background: var(--rd-olive) !important;
+  box-shadow: none !important;
+  border-radius: var(--rd-radius) !important;
+}
+
+.nav-logo-text {
+  color: var(--rd-ink) !important;
+  text-shadow: none !important;
+}
+.nav-logo-text span {
+  color: var(--rd-accent) !important;
+}
+
+.nav-links a {
+  color: var(--rd-ink-soft) !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.02em !important;
+}
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--rd-ink) !important;
+  background: transparent !important;
+}
+.nav-links a::after {
+  background: var(--rd-accent) !important;
+}
+
+#navbar .btn-primary {
+  background: var(--rd-ink) !important;
+  color: var(--rd-paper) !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+#navbar .btn-primary:hover {
+  background: var(--rd-accent) !important;
+}
+
+#navbar.scrolled .nav-logo-text,
+#navbar.scrolled .nav-logo-text span,
+#navbar.scrolled .nav-links a,
+#navbar.scrolled .btn-primary {
+  /* Let !important rules above handle it */
+}
 /* ===========================================================
    RESPONSIVE
 =========================================================== */
